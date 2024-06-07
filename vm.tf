@@ -91,7 +91,10 @@ resource "azurerm_linux_virtual_machine" "ecomm-vm" {
   admin_username      = "adminuser1"
   admin_password      = "S@i1234!"
   disable_password_authentication = false  # Enable password authentication
-  network_interface_ids = [azurerm_network_interface.tf-public-nic.id]
+  network_interface_ids = [
+    azurerm_network_interface.tf-public-nic.id,
+    azurerm_network_interface.tf-private-nic.id
+  ]
   custom_data         = file("ecomm.sh") 
 
   os_disk {
