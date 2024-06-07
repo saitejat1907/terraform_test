@@ -95,7 +95,7 @@ resource "azurerm_linux_virtual_machine" "ecomm-vm" {
     azurerm_network_interface.tf-public-nic.id,
     azurerm_network_interface.tf-private-nic.id
   ]
-  custom_data         = file("ecomm.sh") 
+   custom_data         = base64encode(file("ecomm.sh"))  # Base64 encode the script
 
   os_disk {
     caching              = "ReadWrite"
